@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --color-spa-950: #040d09;
+  --color-spa-900: #0a1a14;
+  --color-spa-800: #0d281f;
+  --color-spa-700: #143d30;
+  --color-spa-600: #1b5240;
+  --color-gold: #c9a96e;
+  --color-gold-light: #e8d5a8;
+  --color-gold-dark: #a88b4a;
+  --color-cream: #faf8f4;
+  --color-cream-dark: #f0ebe0;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-spa-900);
+  color: var(--color-cream);
+  overflow-x: hidden;
+}
+
+/* ── Nav glass ── */
+.nav-glass {
+  background: rgba(10, 26, 20, 0.85);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1),
+              transform 0.9s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-d1 { transition-delay: 120ms; }
+.reveal-d2 { transition-delay: 240ms; }
+.reveal-d3 { transition-delay: 360ms; }
+.reveal-d4 { transition-delay: 480ms; }
+
+/* ── Image hover zoom ── */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 1.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* ── Service card ── */
+.service-card {
+  transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1),
+              box-shadow 0.6s cubic-bezier(0.32, 0.72, 0, 1),
+              border-color 0.6s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px -12px rgba(201, 169, 110, 0.12);
+  border-color: rgba(201, 169, 110, 0.35);
+}
+
+/* ── Button push ── */
+.btn-push:active {
+  transform: scale(0.97) translateY(1px);
+}
+
+/* ── Gold gradient text ── */
+.text-gold-grad {
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold), var(--color-gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-spa-950); }
+::-webkit-scrollbar-thumb { background: rgba(201, 169, 110, 0.25); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+
+/* ── Mobile menu ── */
+.mobile-menu {
+  clip-path: circle(0% at calc(100% - 2rem) 2rem);
+  transition: clip-path 0.7s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.mobile-menu.open {
+  clip-path: circle(150% at calc(100% - 2rem) 2rem);
+}
